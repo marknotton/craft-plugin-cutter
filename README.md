@@ -1,2 +1,2 @@
-# craft-plugin-cutter
-Similar to Truncate, only with more features like word/character counts and smart fallbacks.
+# Snip *for Craft CMS*
+Similar to Truncate, only with more features like a snippet filter with smart fallbacks.
