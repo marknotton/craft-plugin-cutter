@@ -1,3 +1,5 @@
+<img src="https://aimeos.org/fileadmin/template/icons/logo.png" alt="Aimeos logo" title="Aimeos" align="right" height="60" />
+
 # Snip *for Craft CMS*
 Similar to Truncate, only with more features like a snippet filter with smart fallbacks.
 
