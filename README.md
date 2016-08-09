@@ -1,4 +1,4 @@
-<img src="https://raw.githubusercontent.com/marknotton/craft-plugin-snip/master/snip/resources/icon.svg" alt="Snippet" align="right" height="60" />
+<img src="http://i.imgur.com/aU2MUxu.png" alt="Snippet" align="right" height="60" />
 
 # Snip *for Craft CMS*
 Similar to Truncate, only with more features like a snippet filter with smart fallbacks.
