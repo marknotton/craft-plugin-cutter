@@ -3,11 +3,11 @@ Similar to Truncate, only with more features like a snippet filter with smart fa
 
 ## Snip
 
-Based on (Nizurs' Truncate plugin](https://github.com/nizur/Truncate); Snip essentially does the same thing with just a little more flexibility, plus the addition of a separate 'snippet' filter.
+Based on [Nizurs' Truncate plugin](https://github.com/nizur/Truncate); Snip essentially does the same thing with just a little more flexibility, plus the addition of a separate 'snippet' filter.
 
 The Snip filter can also be referred to as, **truncate, cut, or chars, words**. The words filter forces the delimiter to 'words'.
 
-###**Settings**
+####**Settings**
 | Parameters | Type   | Default | Description |
 | ---------- | ------ | ------- | ----------- |
 | Limit      | Number | 150     | Date format as per [**PHP Date**](http://php.net/manual/en/function.date.php)
@@ -17,20 +17,20 @@ The Snip filter can also be referred to as, **truncate, cut, or chars, words**. 
 
 It doesn't matter what order you use the parameters. The filter will figure the intended settings by the data type and content.
 
-### Basic Usage
+#### Basic Usage
 ```
 {{ 'Lorem ipsum <span>dolor sit amet</span>, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua'|snip(50) }}
 ```
-### Basic Output
+#### Basic Output
 ```
 Lorem ipsum dolor sit amet, consectetur adipiscing…
 ```
 ----
-### Advance Usage
+#### Advance Usage
 ```
 {{ 'Lorem ipsum <span>dolor sit amet</span>, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua'|snip(10, 'words', '~', false) }}
 ```
-### Advance Output
+#### Advance Output
 ```
 Lorem ipsum <span>dolor sit amet</span>, consectetur adipiscing elit, sed do~
 ```
@@ -39,7 +39,7 @@ Lorem ipsum <span>dolor sit amet</span>, consectetur adipiscing elit, sed do~
 
 Snippet is a filter that assumes there is a commonly used field which summerises an entry in the form of a snippet.
 
-###**Settings**
+####**Settings**
 | Parameters      | Type   | Default   | Description |
 | --------------- | ------ | --------- | ----------- |
 | Limit           | Number | 20        | Date format as per [**PHP Date**](http://php.net/manual/en/function.date.php)
@@ -47,19 +47,20 @@ Snippet is a filter that assumes there is a commonly used field which summerises
 | Snippet handle  | String | 'snippet' | Snippet handle
 | Suffix          | String | '…'       | Wrap each formatted element into a span. If the content is less than the char/word count, no suffix will be added.
 | Delimiter       | String | 'words'   | Truncate the given data by character ('chars') or word ('word') count.
-| Strip HTML      | Bool   | true      | Removes all HTML tags.
+| ~~Strip HTML~~  | Bool   | true      | Removes all HTML tags. This is forced to be **true**
 
-Not so similar to **snip**, Limit, delimiter and strip HTML paramters can be defined in any order. However following must be defined in this order, the fallback handle, snippet, and suffix.
+Not so similar to **snip**, *Limit*, *delimiter* and *strip HTML* parameters can be defined in any order. However the following must be defined in this order: *fallback handle*, *snippet*, and *suffix*.
 
-### Example
+#### Example
 Lets assume you have an entry with a body and a snippet with the following content:
-**Body:**
-```
+
+#####Body:
+```html
 <p>This is the bulk content of the page.</p>
 <img src="/assets/images/logo.png">
 <p>Lorem ipsum <span>dolor sit amet</span>, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua</p>
 ```
-**Snippet:**
+#####Snippet
 ```
 This is a quick overview of what this entry is all about.
 ```
