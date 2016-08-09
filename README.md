@@ -17,7 +17,7 @@ The Snip filter can also be referred to as, **truncate, cut, or chars, words**. 
 | Delimiter  | String | 'chars' | Truncate the given data by character ('chars') or word ('word') count.
 | Strip HTML | Bool   | true    | Removes all HTML tags.
 
-It doesn't matter what order you use the parameters. The filter will figure the intended settings by the data type and content.
+It doesn't matter what order you use the parameters. The filter will figure the intended settings by the data type and content. Making this compatible with Nizurs syntax.
 
 #### Basic Usage
 ```

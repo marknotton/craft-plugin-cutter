@@ -15,13 +15,46 @@ class snippet extends \Twig_Extension {
 		);
 	}
 
-	// Does exactly what the snip filter does, only predefined to cut down by a word count.
-	// Also, this will look for a field with the handle 'snippet'. If the snippet not found or it is empty, fallback to
-	// to the given $fallbackField. 'body' by default. If the fallback field doesn't exist or is empty, return nothing.
-	// {{ entry|snippet(20) }}
+
 	public function snippet($entry, $limit=10, $fallbackField='body', $ending='…')	{
 
     $snip = new snip();
+
+		// Fail if not parameters are passed
+    if ( func_num_args() < 1 ){
+      return false;
+    }
+
+		// The first argument is the entry that is automatically passed.
+    $string = func_get_arg(0);
+
+    // Remove the first argument and set the arguments array
+    $arguments = array_slice(func_get_args(), 1);
+
+		$limit     = null;
+    $delimiter = null;
+		$suffix    = null;
+
+    if ( isset($arguments) ){
+      foreach ($arguments as &$setting) {
+        if (gettype($setting) == 'integer') {
+          $limit = $setting;
+        } else if (gettype($setting) == 'string') {
+					if ($setting == 'words' || $setting == 'chars') {
+						$delimiter = $setting;
+					} else {
+						$suffix = $setting;
+					}
+        }
+      }
+    }
+
+		// Defaults
+		$limit     = !is_null($limit) ? $limit : 10 ;
+		$suffix    = !is_null($suffix) ? $suffix : '…' ;
+		$stripHTML = !is_null($stripHTML) ? $stripHTML : true ;
+
+
 
 		$snippet = !is_null(craft()->fields->getFieldByHandle('snippet')) ? $entry->snippet : null;
 		$fallbackField   = !is_null(craft()->fields->getFieldByHandle($fallbackField)) ? $entry->$fallbackField : null;
