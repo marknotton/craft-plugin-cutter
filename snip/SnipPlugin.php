@@ -27,10 +27,10 @@ class SnipPlugin extends BasePlugin {
   }
 
   public function addTwigExtension() {
-    Craft::import('plugins.snip.twigextensions.cutter');
+    Craft::import('plugins.snip.twigextensions.snip');
     Craft::import('plugins.snip.twigextensions.snippet');
     return array(
-      new cutter(),
+      new snip(),
       new snippet()
     );
   }

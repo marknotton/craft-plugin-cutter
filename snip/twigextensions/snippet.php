@@ -19,9 +19,9 @@ class snippet extends \Twig_Extension {
 	// Also, this will look for a field with the handle 'snippet'. If the snippet not found or it is empty, fallback to
 	// to the given $fallbackField. 'body' by default. If the fallback field doesn't exist or is empty, return nothing.
 	// {{ entry|snippet(20) }}
-	public function snippet($entry, $limit=10, $fallbackField='body', $ending='...')	{
+	public function snippet($entry, $limit=10, $fallbackField='body', $ending='…')	{
 
-    $cutter = new cutter();
+    $snip = new snip();
 
 		$snippet = !is_null(craft()->fields->getFieldByHandle('snippet')) ? $entry->snippet : null;
 		$fallbackField   = !is_null(craft()->fields->getFieldByHandle($fallbackField)) ? $entry->$fallbackField : null;
@@ -30,13 +30,13 @@ class snippet extends \Twig_Extension {
       if ($limit == false) {
         return $entry->snippet;
       } else {
-      	return $cutter->words($entry->snippet, $limit, $ending);
+      	return $snip->words($entry->snippet, $limit, $ending);
       }
     } elseif (isset($fallbackField)) {
       if ($limit == false) {
-        return $cutter->$fallbackField;
+        return $snip->$fallbackField;
       } else {
-        return $cutter->words($fallbackField, $limit, $ending);
+        return $snip->words($fallbackField, $limit, $ending);
       }
     } else {
     	return null;

@@ -7,22 +7,20 @@ class cutter extends \Twig_Extension
 {
 
 	public function getName()	{
-		return Craft::t('Cutter');
+		return Craft::t('Snip');
 	}
 
 	public function getFilters() {
 		return array(
-			'truncate' => new \Twig_Filter_Method($this, 'cut'),
-			'snip' 	   => new \Twig_Filter_Method($this, 'cut'),
-			'cutter' 	 => new \Twig_Filter_Method($this, 'cut'),
-			'cut' 		 => new \Twig_Filter_Method($this, 'cut'),
-			'chars' 	 => new \Twig_Filter_Method($this, 'cut'),
-			'words' 	 => new \Twig_Filter_Method($this, 'words')
+			'snip' => new \Twig_Filter_Method($this, 'snip'),
+			'truncate' => new \Twig_Filter_Method($this, 'snip'),
+			'cut' => new \Twig_Filter_Method($this, 'snip'),
+			'chars' => new \Twig_Filter_Method($this, 'snip'),
+			'words' => new \Twig_Filter_Method($this, 'words')
 		);
 	}
 
-	// {{ entry.description|snip(200, '..') }}
-	public function cut($string, $limit=150, $suffix='…', $delimiter='chars')	{
+	public function snip($string, $limit=150, $suffix='…', $delimiter='chars')	{
 		// Multibyte string check
 		$mb_ok = function_exists('mb_get_info');
 		$addSuffix = false;
@@ -58,8 +56,7 @@ class cutter extends \Twig_Extension
 		}
 	}
 
-	// {{ entry.description|words(20) }}
 	public function words($string, $limit=40, $suffix='…')	{
-		return $this->cut($string, $limit, $suffix, 'words');
+		return $this->snip($string, $limit, $suffix, 'words');
 	}
 }
