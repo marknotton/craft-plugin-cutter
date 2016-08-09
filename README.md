@@ -52,7 +52,7 @@ Snippet is a filter that assumes there is a commonly used field which summerises
 
 Not so similar to **snip**, *Limit*, *delimiter* and *strip HTML* parameters can be defined in any order. However the following must be defined in this order: *fallback handle*, *snippet*, and *suffix*.
 
-#### Example
+### Example
 Lets assume you have an entry with a body and a snippet with the following content:
 
 #####Body example:
