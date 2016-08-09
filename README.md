@@ -1,4 +1,4 @@
-<img src="http://i.imgur.com/aU2MUxu.png" alt="Snippet" align="right" height="60" />
+<img src="http://i.imgur.com/aU2MUxu.png" alt="Snippet" align="left" height="60" />
 
 # Snip *for Craft CMS*
 Similar to Truncate, only with more features like a snippet filter with smart fallbacks.
@@ -27,7 +27,6 @@ It doesn't matter what order you use the parameters. The filter will figure the 
 ```
 Lorem ipsum dolor sit amet, consectetur adipiscing…
 ```
-----
 #### Advance Usage
 ```
 {{ 'Lorem ipsum <span>dolor sit amet</span>, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua'|snip(10, 'words', '~', false) }}
@@ -56,17 +55,16 @@ Not so similar to **snip**, *Limit*, *delimiter* and *strip HTML* parameters can
 #### Example
 Lets assume you have an entry with a body and a snippet with the following content:
 
-#####Body:
+#####Body example:
 ```html
 <p>This is the bulk content of the page.</p>
 <img src="/assets/images/logo.png">
 <p>Lorem ipsum <span>dolor sit amet</span>, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua</p>
 ```
-#####Snippet
+#####Snippet example:
 ```
 This is a quick overview of what this entry is all about.
 ```
-
 ### Basic Usage
 ```
 {{ entry|snippet(6) }}
@@ -75,7 +73,6 @@ This is a quick overview of what this entry is all about.
 ```
 This is a quick overview of…
 ```
-----
 ### Advance Usage
 Now lets assume the snippet field was left blank...
 ```
