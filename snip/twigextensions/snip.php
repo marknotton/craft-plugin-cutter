@@ -3,7 +3,7 @@ namespace Craft;
 
 use Twig_Filter_Method;
 
-class cutter extends \Twig_Extension
+class snip extends \Twig_Extension
 {
 
 	public function getName()	{
