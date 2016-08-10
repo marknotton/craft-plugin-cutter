@@ -10,6 +10,14 @@ class SnipPlugin extends BasePlugin {
     return '0.1';
   }
 
+  public function getSchemaVersion() {
+    return '0.1';
+  }
+
+  public function getDescription() {
+    return 'Similar to Truncate, only with more features like a snippet filter with smart fallbacks.';
+  }
+
   public function getDeveloper() {
     return 'Yello Studio';
   }
