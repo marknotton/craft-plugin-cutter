@@ -1,11 +1,12 @@
-<img src="http://i.imgur.com/aU2MUxu.png" alt="Snippet" align="left" height="60" />
+<img src="http://i.imgur.com/oi2sSXg.png" alt="Snippet" align="left" height="60" />
 
 # Snip *for Craft CMS*
+
 Similar to Truncate, only with more features like a snippet filter with smart fallbacks.
 
 ## Snip
 
-Based on [Nizurs' Truncate plugin](https://github.com/nizur/Truncate); Snip essentially does the same thing with just a little more flexibility, plus the addition of a separate 'snippet' filter.
+Based on [Nizurs' Truncate plugin](https://github.com/nizur/Truncate); Snip essentially does the same thing with a few more options, plus the addition of a separate 'snippet' filter.
 
 The Snip filter can also be referred to as, **truncate, cut, or chars, words**. The words filter forces the delimiter to 'words'.
 
