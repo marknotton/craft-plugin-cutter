@@ -10,7 +10,8 @@ Based on [Nizurs' Truncate plugin](https://github.com/nizur/Truncate); Snip esse
 
 The Snip filter can also be referred to as, **truncate, cut, or chars, words**. The words filter forces the delimiter to 'words'.
 
-####**Settings**
+#### **Settings**
+
 | Parameters | Type   | Default | Description |
 | ---------- | ------ | ------- | ----------- |
 | Limit      | Number | 150     | Date format as per [**PHP Date**](http://php.net/manual/en/function.date.php)
@@ -41,7 +42,8 @@ Lorem ipsum <span>dolor sit amet</span>, consectetur adipiscing elit, sed do~
 
 Snippet is a filter that assumes there is a commonly used field which summerises an entry in the form of a snippet.
 
-####**Settings**
+#### **Settings**
+
 | Parameters      | Type   | Default   | Description |
 | --------------- | ------ | --------- | ----------- |
 | Limit           | Number | 20        | Date format as per [**PHP Date**](http://php.net/manual/en/function.date.php)
@@ -56,13 +58,13 @@ Not so similar to **snip**, *Limit*, *delimiter* and *strip HTML* parameters can
 ### Example
 Lets assume you have an entry with a body and a snippet with the following content:
 
-#####Body example:
+##### Body example:
 ```html
 <p>This is the bulk content of the page.</p>
 <img src="/assets/images/logo.png">
 <p>Lorem ipsum <span>dolor sit amet</span>, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua</p>
 ```
-#####Snippet example:
+##### Snippet example:
 ```
 This is a quick overview of what this entry is all about.
 ```
