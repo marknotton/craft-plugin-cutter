@@ -71,8 +71,8 @@ This is only intended for really bespoke cases. Developed primarily for the use 
 | Parameters      | Type   | Default | Description |
 | --------------- | ------ | ------- | ----------- |
 | Character Limit | Number | 150     | Limit the amount of characters before truncation. A max of 150 is recommended for SEO purposes.
-| Word Limit      | Number | 20      | Limit the amount of characters before truncation.
-| Sentences Limit | Number | 2       | Limit the amount of characters before truncation.
+| Word Limit      | Number | 20      | Limit the amount of words before truncation.
+| Sentences Limit | Number | 2       | Limit the amount of sentences before truncation.
 | Suffix          | String | '…'     | Choose a string that should be added to the end; if truncation is required.
 
 ```
