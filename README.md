@@ -28,13 +28,12 @@ The **words** filter forces the delimiter to 'words' and the default limit to 40
 | Delimiter  | String | 'chars' | Truncate the given data by character ('chars') or word ('word') count.
 | Strip HTML | Bool   | true    | Removes all HTML tags.
 
-It doesn't matter what order you use the parameters. The filter will figure the intended settings by the data type and content. Making this compatible with Nizurs syntax.
+If you're coming from Nizurs truncate plugin, the same syntax can be used with my Snip filter. 
 
 ### Usage
 Lets assume you have the following:
 
 > {% set someText = 'Lorem ipsum <span>dolor sit amet</span>, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua' %}
-
 
 #### Basic
 ```
@@ -89,14 +88,12 @@ Snippet is a filter that assumes there is a commonly used field which summerises
 
 | Parameters      | Type   | Default   | Description |
 | --------------- | ------ | --------- | ----------- |
-| Limit           | Number | 20        | Date format as per [**PHP Date**](http://php.net/manual/en/function.date.php)
+| Limit           | Number | 20        | Character/Word limit
 | Fallback handle | String | 'body'    | If this snippet isn't found, a fallback field will be truncated to supply a small sample of copy. If no fallback is found either, nothing will be output.
-| Snippet handle  | String | 'snippet' | Snippet handle
-| Suffix          | String | '…'       | Wrap each formatted element into a span. If the content is less than the char/word count, no suffix will be added.
+| Snippet handle  | String | 'snippet' | Snippet fieldtype handle
+| Suffix          | String | '…'       | Choose a string that should be added to the end; if truncation is required.
 | Delimiter       | String | 'words'   | Truncate the given data by character ('chars') or word ('word') count.
-| ~~Strip HTML~~  | Bool   | true      | Removes all HTML tags. This is forced to be **true**
-
-Not so similar to **snip**, *Limit*, *delimiter* and *strip HTML* parameters can be defined in any order. However the following must be defined in this order: *fallback handle*, *snippet*, and *suffix*.
+| ~~Strip HTML~~  | Bool   | true      | All HTML tags are removed. This can't be turned off.
 
 ### Example
 Lets assume you have an entry with a body and a snippet with the following content:
