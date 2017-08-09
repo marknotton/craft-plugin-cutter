@@ -32,9 +32,9 @@ It doesn't matter what order you use the parameters. The filter will figure the 
 
 ### Usage
 Lets assume you have the following:
-```
-{% set someText = 'Lorem ipsum <span>dolor sit amet</span>, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua' %}
-```
+
+> {% set someText = 'Lorem ipsum <span>dolor sit amet</span>, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua' %}
+
 
 #### Basic
 ```
@@ -67,7 +67,7 @@ The **sentences** filter default limit is 2 sentences.
 
 This is only intended for really bespoke cases. Developed primarily for the use of generating clean SEO safe descriptions, it essentially combines the character, word and sentence filters into one.
 
-####**Settings**
+#### **Settings**
 | Parameters      | Type   | Default | Description |
 | --------------- | ------ | ------- | ----------- |
 | Character Limit | Number | 150     | Limit the amount of characters before truncation. A max of 150 is recommended for SEO purposes.
