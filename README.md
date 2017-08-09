@@ -8,35 +8,78 @@ Similar to Truncate, only with more features like a snippet filter with smart fa
 
 Based on [Nizurs' Truncate plugin](https://github.com/nizur/Truncate); Snip essentially does the same thing with a few more options, plus the addition of a separate 'snippet' filter.
 
-The Snip filter can also be referred to as, **truncate, cut, or chars, words**. The words filter forces the delimiter to 'words'.
+Any of the following filter aliases will call on the Snip filter:
+
+```
+{{ someText|truncate }}
+{{ someText|cut }}
+{{ someText|chars }}
+{{ someText|words }}
+```
+
+The **words** filter forces the delimiter to 'words' and the default limit to 40 words.
 
 #### **Settings**
 
 | Parameters | Type   | Default | Description |
 | ---------- | ------ | ------- | ----------- |
-| Limit      | Number | 150     | Date format as per [**PHP Date**](http://php.net/manual/en/function.date.php)
-| Suffix     | String | '…'     | Wrap each formatted element into a span. If the content is less than the char/word count, no suffix will be added.
+| Limit      | Number | 150     | Character/Word limit
+| Suffix     | String | '…'     | Choose a string that should be added to the end; if truncation is required.
 | Delimiter  | String | 'chars' | Truncate the given data by character ('chars') or word ('word') count.
 | Strip HTML | Bool   | true    | Removes all HTML tags.
 
 It doesn't matter what order you use the parameters. The filter will figure the intended settings by the data type and content. Making this compatible with Nizurs syntax.
 
-#### Basic Usage
+### Usage
+Lets assume you have the following:
 ```
-{{ 'Lorem ipsum <span>dolor sit amet</span>, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua'|snip(50) }}
+{% set someText = 'Lorem ipsum <span>dolor sit amet</span>, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua' %}
+```
+
+#### Basic
+```
+{{ someText|snip(50) }}
 ```
 #### Basic Output
 ```
 Lorem ipsum dolor sit amet, consectetur adipiscing…
 ```
-#### Advance Usage
+#### Advance
 ```
-{{ 'Lorem ipsum <span>dolor sit amet</span>, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua'|snip(10, 'words', '~', false) }}
+{{ someText|snip(10, 'words', '~', false) }}
 ```
 #### Advance Output
 ```
 Lorem ipsum <span>dolor sit amet</span>, consectetur adipiscing elit, sed do~
 ```
+
+### Sentences
+
+Assuming your text uses fullstops; you can truncate down to a specific number of sentences too:
+
+```
+{{ someText|sentences(2) }}
+```
+
+The **sentences** filter default limit is 2 sentences.
+
+### Description
+
+This is only intended for really bespoke cases. Developed primarily for the use of generating clean SEO safe descriptions, it essentially combines the character, word and sentence filters into one.
+
+####**Settings**
+| Parameters      | Type   | Default | Description |
+| --------------- | ------ | ------- | ----------- |
+| Character Limit | Number | 150     | Limit the amount of characters before truncation. A max of 150 is recommended for SEO purposes.
+| Word Limit      | Number | 20      | Limit the amount of characters before truncation.
+| Sentences Limit | Number | 2       | Limit the amount of characters before truncation.
+| Suffix          | String | '…'     | Choose a string that should be added to the end; if truncation is required.
+
+```
+{{ someText|description }}
+{{ someText|description(100, 10, 1, '!') }}
+```
+
 ----
 ## Snippet
 

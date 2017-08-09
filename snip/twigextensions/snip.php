@@ -18,6 +18,7 @@ class snip extends \Twig_Extension
 			'chars' 	  => new \Twig_Filter_Method($this, 'snip'),
 			'words' 	  => new \Twig_Filter_Method($this, 'words'),
 			'sentences' => new \Twig_Filter_Method($this, 'sentences', array('is_safe' => array('html')) ),
+			'description'   => new \Twig_Filter_Method($this, 'description', array('is_safe' => array('html')) ),
 		);
 	}
 
@@ -31,8 +32,13 @@ class snip extends \Twig_Extension
 		return call_user_func_array(array(craft()->snip_snip, 'words'), $args);
 	}
 
-	public function sentences($string, $limit=3, $suffix='')	{
+	public function sentences($string, $limit=2, $suffix='')	{
 		$args = func_get_args();
 		return call_user_func_array(array(craft()->snip_snip, 'sentences'), $args);
+	}
+
+	public function description($string, $chars="", $words="", $sentence="", $suffix="")	{
+		$args = func_get_args();
+		return call_user_func_array(array(craft()->snip_snip, 'description'), $args);
 	}
 }

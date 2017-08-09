@@ -5,7 +5,7 @@ class Snip_SnipService extends BaseApplicationComponent {
 
 	public function snip()	{
 
-		// Fail if not parameters are passed
+		// Fail if no parameters are passed
     if ( func_num_args() < 1 ){
       return false;
     }
@@ -21,6 +21,7 @@ class Snip_SnipService extends BaseApplicationComponent {
 		$suffix    = null;
     $stripHTML = null;
 
+		// Run through the settings and define the appropriate variables
     if ( isset($arguments) ){
       foreach ($arguments as &$setting) {
         if ( gettype($setting) == 'boolean') {
@@ -37,7 +38,7 @@ class Snip_SnipService extends BaseApplicationComponent {
       }
     }
 
-		// Defaults
+		// Default settings
 		$limit     = !is_null($limit) ? $limit : 150 ;
 		$delimiter = !is_null($delimiter) ? $delimiter : 'chars' ;
 		$suffix    = !is_null($suffix) ? $suffix : '…' ;
@@ -50,9 +51,11 @@ class Snip_SnipService extends BaseApplicationComponent {
 		// Get Twig charset
 		$charset = craft()->templates->getTwig()->getCharset();
 
+		// Strip any markup tags
 		if ( $stripHTML ) {
 			$string = strip_tags($string);
 		}
+
 
 		if ( $delimiter == 'chars') {
 			// Trim by character count
@@ -70,6 +73,7 @@ class Snip_SnipService extends BaseApplicationComponent {
 			}
 		}
 
+		// Suffix
 		if (!empty($string)) {
 			if ($addSuffix) {
 				return rtrim($string, ',": |()&*!`~.[]{-_=+}').html_entity_decode($suffix);
@@ -79,12 +83,15 @@ class Snip_SnipService extends BaseApplicationComponent {
 		}
 	}
 
+	// Words
 	public function words($string, $limit=40, $suffix='…')	{
 		return $this->snip($string, $limit, $suffix, 'words');
 	}
 
-	public function sentences($string, $limit=3, $suffix='')	{
-		// return implode('.', explode('.', $string, $limit)).$suffix;
+
+	// Sentences
+	public function sentences($string, $limit=2, $suffix='')	{
+		$limit = !is_null($limit) ? $limit : 2 ;
 		$sentences = '';
 		$count = 0;
 		foreach (explode('.', $string) as $sentence) {
@@ -95,6 +102,14 @@ class Snip_SnipService extends BaseApplicationComponent {
 		}
 
 		return $sentences.$suffix;
+	}
+
+	// Description
+	public function description($string, $chars=null, $words=20, $sentence=null, $suffix=null) {
+		$string = $this->snip($string, $chars, $suffix, 'chars');
+		$string = $this->words($string, $words, $suffix);
+		$string = $this->sentences($string, $sentence, $suffix);
+		return $string;
 	}
 
 }
